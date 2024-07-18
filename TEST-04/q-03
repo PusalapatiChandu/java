@@ -1,0 +1,32 @@
+
+class Employee {
+    void calpay() {
+        System.out.println("employee salary");
+    }
+}
+class Manager extends Employee {
+    Manager(int b) {
+        calpay(b);
+    }
+    void calpay(int b) {
+        System.out.println("Calculating salary for Manager: " + b);
+    }
+}
+class Engineer extends Employee {
+    Engineer(int c) {
+        calpay(c);
+    }
+    void calpay(int c) {
+        System.out.println("Calculating salary for Engineer: " + c);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager = new Manager(5000);
+        Engineer engineer = new Engineer(4000);
+
+        manager.calpay();   
+        engineer.calpay();  
+    }
+}
