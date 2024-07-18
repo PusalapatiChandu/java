@@ -1,0 +1,37 @@
+abstract class Shape {
+    public abstract double area();
+}
+class Rectangle extends Shape {
+    private double width;
+    private double height;
+    public void setDimensions(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+    public double area() {
+        return width * height;
+    }
+}
+class Circle extends Shape {
+    private double radius;
+    private static final double PI = 3.14159; 
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+    public double area() {
+        return PI * radius * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle();
+        rect.setDimensions(5.0, 3.0);
+
+        Circle circle = new Circle();
+        circle.setRadius(4);
+
+        System.out.println("Area of Rectangle: " + rect.area());
+        System.out.println("Area of Circle: " + circle.area());
+    }
+}
