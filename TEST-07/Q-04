@@ -1,0 +1,126 @@
+ abstract class LibraryItem {
+    private String title;
+    private String author;
+    private int year;
+    private boolean isCheckedOut;
+    public LibraryItem(String title, String author, int year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.isCheckedOut = false;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getYear() {
+        return year;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public boolean isCheckedOut() {
+        return isCheckedOut;
+    }
+
+    public void checkOut() {
+        if (isCheckedOut) {
+            System.out.println("Item is already checked out.");
+        } else {
+            isCheckedOut = true;
+            System.out.println("Item checked out successfully.");
+        }
+    }
+    public void checkIn() {
+        if (!isCheckedOut) {
+            System.out.println("Item is already checked in.");
+        } else {
+            isCheckedOut = false;
+            System.out.println("Item checked in successfully.");
+        }
+    }
+
+    public abstract void displayDetails();
+}
+ class Book extends LibraryItem {
+    private String genre;
+
+    public Book(String title, String author, int year, String genre) {
+        super(title, author, year);
+        this.genre = genre;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    public void displayDetails() {
+        System.out.println("Book Details:");
+        System.out.println("Title: " + getTitle());
+        System.out.println("Author: " + getAuthor());
+        System.out.println("Year: " + getYear());
+        System.out.println("Genre: " + genre);
+        System.out.println("Status: " + (isCheckedOut() ? "Checked Out" : "Available"));
+    }
+}
+ class DVD extends LibraryItem {
+    private String director;
+
+    public DVD(String title, String director, int year) {
+        super(title, director, year);
+        this.director = director;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+    public void displayDetails() {
+        System.out.println("DVD Details:");
+        System.out.println("Title: " + getTitle());
+        System.out.println("Director: " + director);
+        System.out.println("Year: " + getYear());
+        System.out.println("Status: " + (isCheckedOut() ? "Checked Out" : "Available"));
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Book book = new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925, "Fiction");
+        DVD dvd = new DVD("Inception", "Christopher Nolan", 2010);
+        book.displayDetails();
+        dvd.displayDetails();
+        book.checkOut();
+        dvd.checkOut();
+        
+        book.displayDetails();
+        dvd.displayDetails();
+
+        book.checkIn();
+        dvd.checkIn();
+        
+        book.displayDetails();
+        dvd.displayDetails();
+    }
+}
+
+
