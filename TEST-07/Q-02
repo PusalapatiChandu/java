@@ -1,0 +1,73 @@
+
+ abstract class GameCharacter {
+    public String name;
+    public int health;
+    public int level;
+    public GameCharacter(String name, int health, int level) {
+        this.name = name;
+        this.health = health;
+        this.level = level;
+    }
+    public abstract void attack();
+    public abstract void defend();
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Health: " + health);
+        System.out.println("Level: " + level);
+    }
+}
+ class Warrior extends GameCharacter {
+    public Warrior(String name, int health, int level) {
+        super(name, health, level);
+    }
+    public void attack() {
+        System.out.println(name + " swings a sword!");
+    }
+    public void defend() {
+        System.out.println(name + " blocks with a shield!");
+    }
+}
+ class Mage extends GameCharacter {
+    public Mage(String name, int health, int level) {
+        super(name, health, level);
+    }
+    public void attack() {
+        System.out.println(name + " casts a fireball!");
+    }
+    public void defend() {
+        System.out.println(name + " conjures a magical barrier!");
+    }
+}
+ class Archer extends GameCharacter {
+    public Archer(String name, int health, int level) {
+        super(name, health, level);
+    }
+    public void attack() {
+        System.out.println(name + " shoots an arrow!");
+    }
+    public void defend() {
+        System.out.println(name + " dodges the attack!");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        GameCharacter warrior = new Warrior("Thorin", 100, 10);
+        GameCharacter mage = new Mage("Gandalf", 80, 12);
+        GameCharacter archer = new Archer("Legolas", 90, 11);
+        warrior.displayInfo();
+        warrior.attack();
+        warrior.defend();
+
+        System.out.println();
+
+        mage.displayInfo();
+        mage.attack();
+        mage.defend();
+
+        System.out.println();
+
+        archer.displayInfo();
+        archer.attack();
+        archer.defend();
+    }
+}
