@@ -1,0 +1,61 @@
+abstract class Member {
+    String name;
+    int id;
+
+    Member(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    abstract String getDetails();
+}
+class Student extends Member {
+    String major;
+
+    Student(String name, int id, String major) {
+        super(name, id);
+        this.major = major;
+    }
+
+    @Override
+    String getDetails() {
+        return "Student Name: " + name + ", ID: " + id + ", Major: " + major;
+    }
+}
+class Teacher extends Member {
+    String subject;
+
+    Teacher(String name, int id, String subject) {
+        super(name, id);
+        this.subject = subject;
+    }
+
+    @Override
+    String getDetails() {
+        return "Teacher Name: " + name + ", ID: " + id + ", Subject: " + subject;
+    }
+}
+class Staff extends Member {
+    String department;
+
+    Staff(String name, int id, String department) {
+        super(name, id);
+        this.department = department;
+    }
+
+    @Override
+    String getDetails() {
+        return "Staff Name: " + name + ", ID: " + id + ", Department: " + department;
+    }
+}
+public class EducationalInstitution {
+    public static void main(String[] args) {
+        Student student = new Student("Alice", 1, "Computer Science");
+        Teacher teacher = new Teacher("Mr. Smith", 2, "Mathematics");
+        Staff staff = new Staff("Mrs. Johnson", 3, "Administration");
+
+        System.out.println(student.getDetails());
+        System.out.println(teacher.getDetails());
+        System.out.println(staff.getDetails());
+    }
+}
